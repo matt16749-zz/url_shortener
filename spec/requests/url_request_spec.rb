@@ -10,8 +10,10 @@ RSpec.describe "Url Requests", :type => :request do
 
       expect(response).to have_http_status(200)
       post_response = JSON.parse(response.body)
+      shortened_url =
+        /(localhost:3000\/)(.+)/.match(post_response['shortened'])[2]
 
-      get "/#{post_response['shortened']}"
+      get "/#{shortened_url}"
 
       expect(response).to redirect_to(original_url)
       expect(response).to have_http_status(302)

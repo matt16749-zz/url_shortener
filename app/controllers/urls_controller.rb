@@ -20,7 +20,7 @@ class UrlsController < ApplicationController
 
       render json: {
         original: @url.original,
-        shortened: @url.shortened
+        shortened: "http://localhost:3000/#{@url.shortened}"
       }.to_json
     else
       render status: :unprocessable_entity, json: {

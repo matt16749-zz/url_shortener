@@ -22,7 +22,7 @@ RSpec.describe UrlsController, type: :controller do
 
         expected = {
           'original' => 'http://google.com',
-          'shortened' => shortened_url
+          'shortened' => "http://localhost:3000/#{shortened_url}"
         }
         expect(response).to be_success
         expect(response).to have_http_status(200)
